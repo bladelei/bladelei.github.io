@@ -47,11 +47,11 @@
 </script>
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Bladelei">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Bladelei">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Bladelei">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/">
@@ -66,7 +66,7 @@
   };
 </script>
 
-  <title>Hexo</title>
+  <title>Bladelei</title>
   
 
 
@@ -110,10 +110,11 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Bladelei</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <p class="site-subtitle">Toss more than life.</p>
   </div>
 
   <div class="site-nav-toggle">
@@ -169,12 +170,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Bladelei">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Bladelei">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -196,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-12 10:55:45" itemprop="dateModified" datetime="2020-01-12T10:55:45+08:00">2020-01-12</time>
+                <time title="Modified: 2020-01-12 17:39:40" itemprop="dateModified" datetime="2020-01-12T17:39:40+08:00">2020-01-12</time>
               </span>
 
           
@@ -210,7 +211,63 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="python-函数传参"><a href="#python-函数传参" class="headerlink" title="python 函数传参"></a>python 函数传参</h2><h3 id="python-函数参数"><a href="#python-函数参数" class="headerlink" title="python 函数参数"></a>python 函数参数</h3><h4 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h4>
+          <h3 id="python-函数传参"><a href="#python-函数传参" class="headerlink" title="python 函数传参"></a>python 函数传参</h3><h4 id="1-问题引入"><a href="#1-问题引入" class="headerlink" title="1 问题引入"></a>1 问题引入</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(b)</span>:</span></span><br><span class="line">    print(b)</span><br><span class="line">    b = <span class="number">2</span></span><br><span class="line">    print(b)</span><br><span class="line">fun(a)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">结果:</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(a)</span>:</span></span><br><span class="line">    a.append(<span class="number">1</span>)</span><br><span class="line">fun(a)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">结果:</span><br><span class="line">[1]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在第一个函数里面 a 没变，但是在第二个函数里面a变了。</p>
+</blockquote>
+<h4 id="原因解释"><a href="#原因解释" class="headerlink" title="原因解释"></a>原因解释</h4><ul>
+<li><p>当一个引用传递给函数的时候,函数自动复制一份引用,这个函数里的引用和外边的引用没有关系了.所以第一个例子里函数把引用指向了一个不可变对象,当函数返回的时候,外面的引用没丝毫感觉.而第二个例子就不一样了,函数内的引用指向的是可变对象,对它的操作就和定位了指针地址一样,在内存里进行修改。</p>
+</li>
+<li><p>关于可变对象和不可变对象：对象有两种,“可更改”（mutable）与“不可更改”（immutable）对象。在python中，strings, tuples, 和numbers（int, float bool）是不可更改的对象，而 list, dict, set 等则是可以修改的对象。(这就是这个问题的重点)</p>
+</li>
+</ul>
+<h4 id="2-新的例子"><a href="#2-新的例子" class="headerlink" title="2 新的例子"></a>2 新的例子</h4><blockquote>
+<p>在jupyter notebook 或者在交互式命令行中运行（每单独一行视为一个代码块）</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3000</span></span><br><span class="line">b = <span class="number">3000</span> </span><br><span class="line">print(id(a))</span><br><span class="line">print(id(b))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">结果：</span><br><span class="line">140677514607920</span><br><span class="line">140677514607888</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>出现 a 和 b 指向不同的内存地址。</p>
+</blockquote>
+<h4 id="原因解释-1"><a href="#原因解释-1" class="headerlink" title="原因解释"></a>原因解释</h4><ul>
+<li><p>python中是有小整数对象池和大整数对象池概念的， Python 对小整数的定义是 [-5, 256] 这些整数对象是提前建立好的，不会被垃圾回收。(小整数缓存池，大整数缓冲池),之前第一个例子里面的1 2 都属于小整数池中，直接拿节省时间，但是计算机不可能存那多多整数，所以只存了小整数池中的数字。</p>
+</li>
+<li><p>上面的例子中 a b 属于不同的代码块，因此是不同的对象。（放在一个py文件中再运行的话结果会不同，参考后面新的例子解释）</p>
+</li>
+<li><p>python有个intern机制，简单说就是维护一个字典，这个字典维护已经创建字符串(key)和它的字符串对象的地址(value),每次创建字符串对象都会和这个字典比较,没有就创建，重复了就用指针进行引用就可以了。</p>
+<ul>
+<li>1.小整数 [-5, 256] 共用对象，常驻内存</li>
+<li>2.单个字符共用对象，常驻内存</li>
+<li>3.单个单词，不可修改，默认开启intern机制，共用对象，引用计数为0，则销毁</li>
+<li>4.字符串（含有空格），不可修改，没开启intern机制，不共用对象，引用计数为0，销毁</li>
+</ul>
+<h4 id="3-新的例子"><a href="#3-新的例子" class="headerlink" title="3 新的例子"></a>3 新的例子</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></span><br><span class="line">    a = <span class="number">3000</span></span><br><span class="line">    b = <span class="number">3000</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(object)</span>:</span></span><br><span class="line">    a = <span class="number">3000</span></span><br><span class="line">    b = <span class="number">3000</span></span><br><span class="line">    </span><br><span class="line">print(id(A.a))</span><br><span class="line">print(id(A.b))</span><br><span class="line"></span><br><span class="line">print(<span class="string">'--------'</span>)</span><br><span class="line"></span><br><span class="line">print(id(B.a))</span><br><span class="line">print(id(B.b))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">结果:</span><br><span class="line">140003104623280</span><br><span class="line">140003104623280</span><br><span class="line">--------</span><br><span class="line">140003104623728</span><br><span class="line">140003104623728</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>A 中 a 和 b 的地址又变得相同了，但是与B中的不一样。</p>
+</blockquote>
+<h4 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h4><ul>
+<li>大整数池的原因：如果处于相同代码块(类中或者在同一个py文件中)的大整数对象，它们是同一个内存地址（同一对象）， 会让其共享引用， 不会在开辟一个内层空间存放，目的也是为了优化python内部的性能。</li>
+</ul>
+<h4 id="4-扩展"><a href="#4-扩展" class="headerlink" title="4 扩展"></a>4 扩展</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>, <span class="number">1006</span>):</span><br><span class="line">    print(id(i))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">140677514607792</span><br><span class="line">140677514607280</span><br><span class="line">140677514607792</span><br><span class="line">140677514607280</span><br><span class="line">140677514607792</span><br><span class="line">140677514607280</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>现象：某一地址出现了好多次。<br>原因： 当一个对象引用计数为0时，会调用tp_dealloc的函数，这个通常是将对象所占用的内存还给python解释器，一般是还给python中的对象内存池，等待新生。而不是将空间还给操作系统。</p>
+</blockquote>
+<blockquote>
+<p>@Notice 自我总结，仅供参考</p>
+</blockquote>
+
       
     </div>
 
@@ -284,7 +341,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
+  <p class="site-author-name" itemprop="name">Bladelei</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -322,12 +379,12 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Bladelei</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a>
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
         
